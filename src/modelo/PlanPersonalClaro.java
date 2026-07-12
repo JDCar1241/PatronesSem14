@@ -2,7 +2,7 @@ package modelo;
 
 public class PlanPersonalClaro extends PlanDatos{
 
-    public PlanPersonalClaro {
+    public PlanPersonalClaro() {
         nombre = "personal Claro";
 
     }
