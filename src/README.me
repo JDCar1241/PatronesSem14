@@ -1,0 +1,98 @@
+README - Práctica 013: Patrones de Diseño de Software
+Integrantes
+Nombre del estudiante:Cardenas Vasquez jairo
+Curso
+
+Diseño de Patrones de Software
+
+Patrón de Diseño Utilizado
+
+Abstract Factory
+
+Descripción del Problema
+
+La empresa de telecomunicaciones ofrece diferentes planes de datos para tres proveedores:
+
+Línea Rápida
+Claro
+Movistar
+
+Cada proveedor cuenta con los siguientes planes:
+
+Plan Personal
+Plan Negocio
+Plan Académico
+
+Cada plan posee una tarifa distinta por mega consumido.
+
+Proveedor	Personal	Negocio	Académico
+Línea Rápida	0.5	1.5	1.0
+Claro	0.6	1.6	1.2
+Movistar	0.8	1.6	1.25
+
+El sistema debe calcular el monto a pagar según la cantidad de megas consumidos.
+
+Objetivo
+
+Implementar una solución orientada a objetos utilizando el patrón Abstract Factory, permitiendo crear familias de planes de datos para distintos proveedores sin modificar el código cliente.
+
+Estructura del Proyecto
+src
+│
+├── modelo
+│   ├── PlanDatos.java
+│   ├── PlanPersonalLR.java
+│   ├── PlanNegocioLR.java
+│   ├── PlanAcademicoLR.java
+│   ├── PlanPersonalClaro.java
+│   ├── PlanNegocioClaro.java
+│   ├── PlanAcademicoClaro.java
+│   ├── PlanPersonalMovistar.java
+│   ├── PlanNegocioMovistar.java
+│   └── PlanAcademicoMovistar.java
+│
+├── factory
+│   ├── ProveedorFactory.java
+│   ├── LineaRapidaFactory.java
+│   ├── ClaroFactory.java
+│   └── MovistarFactory.java
+│
+└── principal
+    └── Main.java
+Funcionamiento
+El usuario selecciona un proveedor.
+La fábrica correspondiente crea los planes disponibles.
+Cada plan establece automáticamente su tasa de pago.
+Se calcula el costo total multiplicando la tasa por los megas consumidos.
+El sistema muestra el resultado para cada plan.
+Aplicación del Patrón Abstract Factory
+
+Se utilizó el patrón Abstract Factory porque existen múltiples familias de productos (proveedores), y cada una posee los mismos tipos de planes:
+
+Personal
+Negocio
+Académico
+
+La interfaz ProveedorFactory define los métodos para crear cada tipo de plan, mientras que las fábricas concretas (LineaRapidaFactory, ClaroFactory y MovistarFactory) implementan la creación específica de sus productos.
+
+Esto permite:
+
+Mantener bajo acoplamiento.
+Facilitar la escalabilidad del sistema.
+Agregar nuevos proveedores sin modificar el código cliente.
+Cumplir con el principio Open/Closed de SOLID.
+Ejemplo de Salida
+===== LINEA RAPIDA =====
+Plan: Personal Linea Rapida Tasa: 0.5 Pago: 500.0
+Plan: Negocio Linea Rapida Tasa: 1.5 Pago: 1500.0
+Plan: Academico Linea Rapida Tasa: 1.0 Pago: 1000.0
+
+===== CLARO =====
+Plan: Personal Claro Tasa: 0.6 Pago: 600.0
+Plan: Negocio Claro Tasa: 1.6 Pago: 1600.0
+Plan: Academico Claro Tasa: 1.2 Pago: 1200.0
+
+===== MOVISTAR =====
+Plan: Personal Movistar Tasa: 0.8 Pago: 800.0
+Plan: Negocio Movistar Tasa: 1.6 Pago: 1600.0
+Plan: Academico Movistar Tasa: 1.25 Pago: 1250.0
